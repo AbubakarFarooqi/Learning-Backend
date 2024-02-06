@@ -1,6 +1,6 @@
 import mongoose, { Mongoose, mongo } from "mongoose";
 
-const todoSchema = mongoose.Schema({
+const todoSchema = new mongoose.Schema({
     complete: {
         type: Boolean,
         default: false
