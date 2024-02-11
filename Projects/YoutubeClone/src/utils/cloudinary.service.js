@@ -15,6 +15,9 @@ const uploadOnCloundinary = async (localPath)=>{
             resource_type: "auto"
         })
         console.log(`File uploaded on cloundinary at: ${response.url}`);
+        
+        fs.unlinkSync(localPath)
+
         return response.url
     } catch (error) {
         fs.unlinkSync(localPath)
