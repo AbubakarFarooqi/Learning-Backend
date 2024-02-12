@@ -1,6 +1,9 @@
 import {v2 as cloudinary} from 'cloudinary';
 import fs from "fs"
-          
+import  dotenv from "dotenv"
+
+dotenv.config()
+
 cloudinary.config({ 
   cloud_name: process.env.CLOUD_NAME, 
   api_key: process.env.CLOUD_API_KEY, 
@@ -10,6 +13,7 @@ cloudinary.config({
 
 const uploadOnCloundinary = async (localPath)=>{
     try {
+
         if(!localPath) return null
         const response =  await cloudinary.uploader.upload(localPath,{
             resource_type: "auto"
@@ -20,6 +24,7 @@ const uploadOnCloundinary = async (localPath)=>{
 
         return response.url
     } catch (error) {
+        console.log("Cloudinary Error:",error)
         fs.unlinkSync(localPath)
         return null       
     }
