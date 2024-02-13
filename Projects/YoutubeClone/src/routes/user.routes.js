@@ -20,5 +20,8 @@ userRouter.route("/register").post(
 );
 
 userRouter.route("/login").get(loginUser);
-// userRouter.route("/logout").get(verifyJwt,loginUser)
+
+//secure Routes
+
+userRouter.route("/refresh-token").post(refreshAccessToken);
 export default userRouter;
